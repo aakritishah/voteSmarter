@@ -1,0 +1,51 @@
+state,registration_link,check_registration_link
+Alabama,https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action,https://www.vote.org/am-i-registered-to-vote/
+Alaska,https://voterregistration.alaska.gov/,https://www.vote.org/am-i-registered-to-vote/
+Arizona,https://servicearizona.com/VoterRegistration/selectLanguage,https://www.vote.org/am-i-registered-to-vote/
+Arkansas,https://www.sos.arkansas.gov/elections/voter-information,https://www.vote.org/am-i-registered-to-vote/
+California,https://registertovote.ca.gov/,https://www.vote.org/am-i-registered-to-vote/
+Colorado,https://www.sos.state.co.us/voter/pages/pub/olvr/verifyNewVoter.xhtml,https://www.vote.org/am-i-registered-to-vote/
+Connecticut,https://voterregistration.ct.gov/OLVR/welcome.do,https://www.vote.org/am-i-registered-to-vote/
+Delaware,https://ivote.de.gov/VoterView/registrant/newregistrant,https://www.vote.org/am-i-registered-to-vote/
+Florida,https://registertovoteflorida.gov/home,https://www.vote.org/am-i-registered-to-vote/
+Georgia,https://registertovote.sos.ga.gov/GAOLVR/welcome.do#no-back-button,https://www.vote.org/am-i-registered-to-vote/
+Hawaii,https://olvr.hawaii.gov/,https://www.vote.org/am-i-registered-to-vote/
+Idaho,https://elections.sos.idaho.gov/ElectionLink/ElectionLink/ApplicationInstructions.aspx,https://www.vote.org/am-i-registered-to-vote/
+Illinois,https://ova.elections.il.gov/?Name=Em5DYCKC4wXCKQSXTgsQ9knm%2b5Ip27VC&T=637339537991817098,https://www.vote.org/am-i-registered-to-vote/
+Indiana,https://indianavoters.in.gov/,https://www.vote.org/am-i-registered-to-vote/
+Iowa,https://mymvd.iowadot.gov/Account/Login?ReturnUrl=%2fVoterRegistration,https://www.vote.org/am-i-registered-to-vote/
+Kansas,https://www.kdor.ks.gov/Apps/VoterReg/Default.aspx,https://www.vote.org/am-i-registered-to-vote/
+Kentucky,https://vrsws.sos.ky.gov/ovrweb/,https://www.vote.org/am-i-registered-to-vote/
+Louisiana,https://www.sos.la.gov/ElectionsAndVoting/Pages/OnlineVoterRegistration.aspx?Referrer=https://www.sos.la.gov/ElectionsAndVoting/RegisterToVote/Pages/default.aspx,https://www.vote.org/am-i-registered-to-vote/
+Maine,https://www.maine.gov/sos/cec/elec/voter-info/votreg.html,https://www.vote.org/am-i-registered-to-vote/
+Maryland,https://voterservices.elections.maryland.gov/OnlineVoterRegistration/InstructionsStep1,https://www.vote.org/am-i-registered-to-vote/
+Massachusetts,https://www.sec.state.ma.us/ele/eleifv/howreg.htm,https://www.vote.org/am-i-registered-to-vote/
+Michigan,https://mvic.sos.state.mi.us/Home/RegisterToVote,https://www.vote.org/am-i-registered-to-vote/
+Minnesota,https://www.sos.state.mn.us/elections-voting/register-to-vote/,https://www.vote.org/am-i-registered-to-vote/
+Mississippi,https://www.sos.ms.gov/elections-voting/voter-registration-information,https://www.vote.org/am-i-registered-to-vote/
+Missouri,https://s1.sos.mo.gov/elections/goVoteMissouri/register.aspx,https://www.vote.org/am-i-registered-to-vote/
+Montana,https://votemt.gov/,https://www.vote.org/am-i-registered-to-vote/
+Nebraska,https://www.nebraska.gov/apps-sos-voter-registration/,https://www.vote.org/am-i-registered-to-vote/
+Nevada,https://www.nvsos.gov/sos/elections/voters/registering-to-vote,https://www.vote.org/am-i-registered-to-vote/
+New Hampshire,https://www.sos.nh.gov/elections/voters/register-vote,https://www.vote.org/am-i-registered-to-vote/
+New Jersey,https://www.state.nj.us/state/elections/voter-registration.shtml,https://www.vote.org/am-i-registered-to-vote/
+New Mexico,https://portal.sos.state.nm.us/OVR/WebPages/InstructionsStep1.aspx,https://www.vote.org/am-i-registered-to-vote/
+New York,https://www.elections.ny.gov/VotingRegister.html#VoteRegForm,https://www.vote.org/am-i-registered-to-vote/
+North Carolina,https://www.ncsbe.gov/Voters/Registering-to-Vote,https://www.vote.org/am-i-registered-to-vote/
+North Dakota,"If you are a U.S. citizen, at least 18 years old, and live in North Dakota, you have the right to vote! Anyone who has lived in North Dakota for 30 days prior to Election Day can vote. North Dakota does not require voter registration, but you do need to have a valid form of identification that can be used for voting. ",https://www.vote.org/am-i-registered-to-vote/
+Ohio,https://olvr.ohiosos.gov/,https://www.vote.org/am-i-registered-to-vote/
+Oklahoma,https://www.oklahoma.gov/elections/voter-registration/register-to-vote.html,https://www.vote.org/am-i-registered-to-vote/
+Oregon,https://sos.oregon.gov/voting/Pages/registration.aspx?lang=en,https://www.vote.org/am-i-registered-to-vote/
+Pennsylvania,https://www.pavoterservices.pa.gov/Pages/VoterRegistrationApplication.aspx,https://www.vote.org/am-i-registered-to-vote/
+Rhode Island,https://vote.sos.ri.gov/Home/RegistertoVote?ActiveFlag=1,https://www.vote.org/am-i-registered-to-vote/
+South Carolina,https://info.scvotes.sc.gov/eng/ovr/start.aspx,https://www.vote.org/am-i-registered-to-vote/
+South Dakota,https://sdsos.gov/elections-voting/voting/register-to-vote/default.aspx,https://www.vote.org/am-i-registered-to-vote/
+Tennessee,https://ovr.govote.tn.gov/,https://www.vote.org/am-i-registered-to-vote/
+Texas,https://www.votetexas.gov/register/index.html,https://www.vote.org/am-i-registered-to-vote/
+Utah,https://vote.utah.gov/register-to-vote-or-update-your-voter-registration/,https://www.vote.org/am-i-registered-to-vote/
+Vermont,https://sos.vermont.gov/elections/voters/registration/,https://www.vote.org/am-i-registered-to-vote/
+Virginia,https://www.elections.virginia.gov/registration/how-to-register/,https://www.vote.org/am-i-registered-to-vote/
+Washington,https://voter.votewa.gov/WhereToVote.aspx,https://www.vote.org/am-i-registered-to-vote/
+West Virginia,https://ovr.sos.wv.gov/Register/Landing#Qualifications,https://www.vote.org/am-i-registered-to-vote/
+Wisconson,https://myvote.wi.gov/en-us/RegisterToVote,https://www.vote.org/am-i-registered-to-vote/
+Wyoming,https://sos.wyo.gov/Elections/State/RegisteringToVote.aspx,https://www.vote.org/am-i-registered-to-vote/
