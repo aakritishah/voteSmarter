@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		Dbz4paytjQX9dKXuRhse+JOWIus=
+		QDIHZAvEe58cE1lFX40x3Ejov5o=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		hFmbDbJSbyTQjRpV4rai9TDwPEc=
+		UCR7YVSI+I2X7huk17mfCnFtnNw=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -22,11 +22,15 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		3jPaLxZB16WUN6SgbrQ9SH1fNLo=
+		beGebdw1SHXdRy7nV5tIDDnZ5IU=
+		</data>
+		<key>flutter_assets/assets/amendments.csv</key>
+		<data>
+		aGOiUoFPbm9MK4PTH0ONW8TzFDw=
 		</data>
 		<key>flutter_assets/assets/general.csv</key>
 		<data>
-		Y9Vs0OCYoAStxtKOzJ+t7lodYSM=
+		1HFekeiEEJkceFZEoCPpDPwqWSc=
 		</data>
 		<key>flutter_assets/assets/precincts_data.csv</key>
 		<data>
@@ -58,7 +62,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		EydRndQNvW+OgY7ARItCUxB0bTU=
+		on5takQmpiW7OHAa+Td+ETy5Xpk=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -79,14 +83,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			I7VyMoelIVlqA9czgfkeyzLcGqaCCD9ZBIlL6IS05ZM=
+			lZ4H+ttwegSVU/Qo/R0aLDXJrd2xSALSGFoSf41bZTw=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GxYPFLBmT3EchSaERRYTtkbXbhgeQtAtnuVO2AwDDps=
+			kTBhRPpE933bcea+CYEWVmOnHxEhzwGexSl18z1KLBs=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -100,14 +104,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4midMNOvDnxJh+1uN2Q1ioaPcJWPMnEf6DRKmIu5jEg=
+			uIAb1FqkDJ2Op1GH+G5eigBNy2PgNB7sMRD0HFDJRp4=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/amendments.csv</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			58SpwX45Z5gQrRIhh6w5QV2jMr0FBoJFacgu5NrxHF4=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/general.csv</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			02N3E+neSQPqgsSDQFwHR26EwsshBNEGFViktMoc0AY=
+			l7toyNSJUtlw6jX2z9WJcYS2cDZxtitpOdhM5dA/HIw=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/precincts_data.csv</key>
@@ -163,7 +174,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tr1sICJ4RXn937akbLdYRIBbDmPds4l60AcTxOl+7Go=
+			+63b5n3C7U94fFQdDX/3uiKrOC0uoBhOW6ZIg61h4p4=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

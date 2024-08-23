@@ -269,7 +269,7 @@ class _PollLocationFinderPageState extends State<PollLocationFinderPage> {
                   zipcode = value;
                 },
                 decoration: InputDecoration(
-                  labelText: 'Enter Zipcode',
+                  labelText: 'Enter Zip...',
                   labelStyle: TextStyle(
                     fontFamily:
                         'San Francisco', // Use default system font for iOS

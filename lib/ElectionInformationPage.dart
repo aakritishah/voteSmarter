@@ -1,3 +1,4 @@
+import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
@@ -14,37 +15,21 @@ class ElectionInformationPage extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: _buildCountdownTimer(
-                DateTime(2024, 8, 20),
-                'Primary',
-                Color(0xffaf170c),
-              ),
-            ),
-            SizedBox(height: 20),
-            Align(
-              alignment: Alignment.center,
-              child: _buildCountdownTimer(
                 DateTime(2024, 11, 5),
                 'General',
                 Color(0xff2c3afa),
               ),
             ),
             SizedBox(height: 40),
-            _buildSection('$_selectedState State Primary', [
-              _buildInfoItem('Primary Election', 'Tue Aug 20, 2024'),
-              _buildInfoItem('Primary Voter Registration', 'Mon Jul 22, 2024'),
-              _buildInfoItem('Primary Absentee Ballot Request',
-                  'Thu Aug 8, 2024 @ 5:00 PM'),
-              _buildInfoItem('Primary Absentee Ballot Return',
-                  'Tue Aug 20, 2024 @ 7:00 PM'),
-            ]),
-            SizedBox(height: 20),
             _buildSection('$_selectedState General Election', [
-              _buildInfoItem('General Election', 'Tue Nov 5, 2024'),
-              _buildInfoItem('General Voter Registration', 'Mon Oct 7, 2024'),
-              _buildInfoItem('General Absentee Ballot Request',
-                  'Thu Oct 24, 2024 @ 5:00 PM'),
-              _buildInfoItem('General Absentee Ballot Return',
-                  'Tue Nov 5, 2024 @ 7:00 PM'),
+              _buildInfoItem(context, 'General Election', 'Tue Nov 5, 2024',
+                  DateTime(2024, 11, 5)),
+              _buildInfoItem(context, 'General Voter Registration',
+                  'Mon Oct 7, 2024', DateTime(2024, 10, 7)),
+              _buildInfoItem(context, 'General Absentee Ballot Request',
+                  'Thu Oct 24, 2024 @ 5:00 PM', DateTime(2024, 10, 24, 17, 0)),
+              _buildInfoItem(context, 'General Absentee Ballot Return',
+                  'Tue Nov 5, 2024 @ 7:00 PM', DateTime(2024, 11, 5, 19, 0)),
             ]),
             SizedBox(height: 20),
           ],
@@ -86,9 +71,9 @@ class ElectionInformationPage extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoItem(String title, String value) {
+  Widget _buildInfoItem(
+      BuildContext context, String title, String value, DateTime eventDate) {
     return Container(
-      height: 74, // Increased height by 1 pixel
       margin: EdgeInsets.all(8),
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -103,16 +88,66 @@ class ElectionInformationPage extends StatelessWidget {
             style: TextStyle(fontSize: 16),
           ),
           SizedBox(height: 4),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Color(0xffaf170c),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffaf170c),
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.calendar_today),
+                onPressed: () {
+                  _showAddToCalendarDialog(context, title, eventDate);
+                },
+              ),
+            ],
           ),
         ],
       ),
     );
+  }
+
+  void _showAddToCalendarDialog(
+      BuildContext context, String title, DateTime eventDate) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Add to Calendar"),
+          content: Text("Do you want to add this date to your calendar?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("Add"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _addToCalendar(title, eventDate);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _addToCalendar(String title, DateTime date) {
+    final Event event = Event(
+      title: title,
+      startDate: date,
+      endDate: date.add(Duration(hours: 1)), // Example: Event lasts 1 hour
+    );
+    Add2Calendar.addEvent2Cal(event);
   }
 }

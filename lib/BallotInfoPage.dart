@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Candidate.dart';
+import 'Amendment.dart';
+import 'AmendmentBioPage.dart';
+import 'FormPage.dart'; // Adjust the import based on your file structure
 
 class BallotInfoPage extends StatefulWidget {
   @override
@@ -8,8 +11,8 @@ class BallotInfoPage extends StatefulWidget {
 
 class _BallotInfoPageState extends State<BallotInfoPage> {
   final String _selectedState = 'Florida'; // Default to Florida
-  List<Candidate> primaryCandidates = [];
   List<Candidate> generalCandidates = [];
+  List<Amendment> amendCandidates = [];
 
   @override
   void initState() {
@@ -18,12 +21,16 @@ class _BallotInfoPageState extends State<BallotInfoPage> {
   }
 
   Future<void> _loadCandidates() async {
-    final primary = await Candidate.loadCandidates('assets/primary.csv');
     final general = await Candidate.loadCandidates('assets/general.csv');
+    final amendments = await Amendment.loadAmendments(
+        'assets/amendments.csv'); // Updated to load amendments
+
+    print('Loaded general candidates: ${general.length}');
+    print('Loaded amendments: ${amendments.length}');
 
     setState(() {
-      primaryCandidates = primary;
       generalCandidates = general;
+      amendCandidates = amendments;
     });
   }
 
@@ -35,11 +42,11 @@ class _BallotInfoPageState extends State<BallotInfoPage> {
           child: Text(
             "Ballot Information",
             style: TextStyle(
-              fontFamily: 'San Francisco', // Use default system font for iOS
+              fontFamily: 'San Francisco',
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Color(0xffaf170c),
-              letterSpacing: 0.5, // Subtle letter spacing
+              letterSpacing: 0.5,
             ),
             textAlign: TextAlign.center,
           ),
@@ -51,8 +58,6 @@ class _BallotInfoPageState extends State<BallotInfoPage> {
           children: <Widget>[
             SizedBox(height: 20),
             _buildGeneralElectionSections(),
-            SizedBox(height: 20),
-            _buildPrimarySections(),
             SizedBox(height: 20),
           ],
         ),
@@ -66,72 +71,73 @@ class _BallotInfoPageState extends State<BallotInfoPage> {
         .where((candidate) =>
             candidate.position == 'President of the United States - 2024')
         .toList();
-    List<Candidate> otherAmendmentsCandidates = generalCandidates
-        .where((candidate) =>
-            candidate.position != 'President of the United States - 2024')
-        .toList();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Center(
-          child: Text(
-            '$_selectedState General Election',
-            style: TextStyle(
-              fontFamily: 'San Francisco', // Use default system font for iOS
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-              letterSpacing: 0.5, // Subtle letter spacing
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Text(
+              '$_selectedState General Election',
+              style: TextStyle(
+                fontFamily: 'San Francisco',
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+                letterSpacing: 0.5,
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 20),
-        _buildSection('Presidential Candidates', presidentialCandidates,
-            isPrimary: false),
-        SizedBox(height: 20),
-        _buildSection('Other Amendments', otherAmendmentsCandidates,
-            isPrimary: false),
-        SizedBox(height: 20),
-      ],
+          SizedBox(height: 20),
+          _buildSection('Presidential Candidates', presidentialCandidates),
+          SizedBox(height: 20),
+          _buildAmendmentSection(
+              'Also on your November ballot:', amendCandidates),
+          SizedBox(height: 20),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FormPage(),
+                  ),
+                );
+              },
+              child: Text('Fill Out Form and Generate PDF'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildPrimarySections() {
-    // Filter primary candidates into Senate and House sections
-    List<Candidate> senateCandidates = primaryCandidates
-        .where((candidate) => candidate.position == 'U.S. Senate')
-        .toList();
-    List<Candidate> houseCandidates = primaryCandidates
-        .where((candidate) => candidate.position == 'U.S. Representative')
-        .toList();
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Center(
-          child: Text(
-            '$_selectedState State Primary',
-            style: TextStyle(
-              fontFamily: 'San Francisco', // Use default system font for iOS
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-              letterSpacing: 0.5, // Subtle letter spacing
-            ),
+  void _handleGeneralElectionButtonPress() {
+    // Implement your functionality here
+    // For example, navigate to another page or show a dialog
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('General Election Info'),
+        content: Text('Here you can add more information or functionality.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('OK'),
           ),
-        ),
-        SizedBox(height: 20),
-        _buildSection('Senate', senateCandidates),
-        SizedBox(height: 20),
-        _buildSection('House of Representatives', houseCandidates),
-        SizedBox(height: 20),
-      ],
+        ],
+      ),
     );
   }
 
-  Widget _buildSection(String title, List<Candidate> candidates,
-      {bool isPrimary = true}) {
+  Widget _buildSection(String title, List<Candidate> candidates) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -139,25 +145,25 @@ class _BallotInfoPageState extends State<BallotInfoPage> {
           child: Text(
             title,
             style: TextStyle(
-              fontFamily: 'San Francisco', // Use default system font for iOS
-              fontSize:
-                  isPrimary ? 20 : 24, // Adjust font size based on section type
+              fontFamily: 'San Francisco',
+              fontSize: title == 'Presidential Candidates'
+                  ? 20
+                  : 24, // Adjust size based on the title
               fontWeight: FontWeight.bold,
-              color: isPrimary ? Colors.black : Colors.black87,
-              letterSpacing: 0.5, // Subtle letter spacing
+              color: Colors.black87,
+              letterSpacing: 0.5,
             ),
           ),
         ),
         SizedBox(height: 10),
-        // Use SliverGridDelegateWithMaxCrossAxisExtent for rectangular items
         GridView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(), // Disables scrolling
+          physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200, // Maximum width of the items
-            childAspectRatio: 2 / 1, // Aspect ratio for width/height
-            crossAxisSpacing: 10, // Horizontal space between items
-            mainAxisSpacing: 10, // Vertical space between items
+            maxCrossAxisExtent: 200,
+            childAspectRatio: 2 / 1,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
           ),
           itemCount: candidates.length,
           itemBuilder: (context, index) {
@@ -165,6 +171,85 @@ class _BallotInfoPageState extends State<BallotInfoPage> {
           },
         ),
       ],
+    );
+  }
+
+  Widget _buildAmendmentSection(String title, List<Amendment> amendments) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontFamily: 'San Francisco',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        SizedBox(height: 10),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 1.5, // Adjust as needed for better layout
+          ),
+          itemCount: amendments.length,
+          itemBuilder: (context, index) {
+            return _buildAmendmentItem(amendments[index]);
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAmendmentItem(Amendment amendment) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8),
+      child: ElevatedButton(
+        onPressed: () {
+          _navigateToAmendmentDetails(amendment);
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white, // Background color
+          foregroundColor: Colors.black, // Text color
+          padding: EdgeInsets.all(8.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'Amendment ${amendment.number}:\n${amendment.nickname}',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _navigateToAmendmentDetails(Amendment amendment) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AmendmentBioPage(amendment: amendment),
+      ),
     );
   }
 
@@ -188,30 +273,27 @@ class _BallotInfoPageState extends State<BallotInfoPage> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: SizedBox(
-        height: 40, // Further reduced height for the buttons
+        height: 40,
         child: InkWell(
           onTap: () {
             _navigateToCandidateBio(candidate);
           },
           child: Center(
-            // Center the text within the button
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Column(
-                mainAxisAlignment:
-                    MainAxisAlignment.center, // Center vertically
-                crossAxisAlignment:
-                    CrossAxisAlignment.center, // Center horizontally
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     candidate.name,
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center, // Center text horizontally
+                    textAlign: TextAlign.center,
                   ),
                   Text(
                     candidate.party,
                     style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
-                    textAlign: TextAlign.center, // Center text horizontally
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),
@@ -254,12 +336,12 @@ class CandidateBioPage extends StatelessWidget {
             ),
             SizedBox(height: 12),
             Text(
-              "Running for ${candidate.position}",
+              'Running for ${candidate.position}',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 12),
             Text(
-              "Bio",
+              'Bio',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Text(
@@ -268,7 +350,7 @@ class CandidateBioPage extends StatelessWidget {
             ),
             SizedBox(height: 12),
             Text(
-              "Key Views",
+              'Key Views',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Text(
@@ -277,7 +359,7 @@ class CandidateBioPage extends StatelessWidget {
             ),
             SizedBox(height: 12),
             Text(
-              "${candidate.link}",
+              '${candidate.link}',
               style: TextStyle(fontSize: 16, color: Colors.blue),
             ),
           ],
