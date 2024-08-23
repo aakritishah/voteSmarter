@@ -1,4 +1,4 @@
-# vote_smart_new
+# voteSmarter
 
 A new Flutter project.
 
